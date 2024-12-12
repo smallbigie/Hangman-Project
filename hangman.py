@@ -100,18 +100,18 @@ def main():
             # Add the correct guess to correctLetters
             correctLetters.append(guess)
 
-        # Check if the player has won
-        foundAllLetters = True # Start off assuming they've won
-        for secretWordLetter in secretWord:
-            if secretWordLetter not in correctLetters:
-                # There's a letter in the secret word that isn't yet in correctLetters, so the player hasn't won:
-                foundAllLetters = False
-                break
-        if foundAllLetters: 
-            print("Yes! The secret word is:", secretWord)
-            print("You have won!")
-            break # Break out of the main game loop
-        
+            # Check if the player has won
+            foundAllLetters = True # Start off assuming they've won
+            for secretWordLetter in secretWord:
+                if secretWordLetter not in correctLetters:
+                    # There's a letter in the secret word that isn't yet in correctLetters, so the player hasn't won:
+                    foundAllLetters = False
+                    break
+            if foundAllLetters: 
+                print("Yes! The secret word is:", secretWord)
+                print("You have won!")
+                break # Break out of the main game loop
+            
 
 
 '''
