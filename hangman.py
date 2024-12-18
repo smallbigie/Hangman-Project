@@ -111,8 +111,17 @@ def main():
                 print("Yes! The secret word is:", secretWord)
                 print("You have won!")
                 break # Break out of the main game loop
-            
+        else:
+            # The player has guessed incorrectly
+            missedLetters.append(guess)
 
+            #Check if the player has guessed too many times and lost. The "-1"
+            # is because we don't count the empty gallows in HANGMAN_PICS
+            if len(missedLetters) == len(HANGMAN_PICS) - 1:
+                drawHangman(missedLetters, correctLetters, secretWord)
+                print("You have run out of guesses")
+                print('The word was "{}"' .format(secretWord))
+                break
 
 '''
 Draw the current state of the hangman game, along with the missed and correctly guessed letters of the secret word
@@ -123,7 +132,12 @@ def drawHangman(missedLetters, correctLetters, secretWord):
     print()
 
     # Show the incorrectly guessed letters 
-
+    print('Missed Letter: ', end='')
+    for letter in missedLetters:
+        print(letter, end='')
+    if len(missedLetters) == 0:
+        print('No missed letters yet.')
+        print()
 
     # Display the blanks for the sectret word (one blank per letter)
     blanks = ['_'] * len(secretWord)
